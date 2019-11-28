@@ -46,9 +46,13 @@ async function run(input = '.', flags) {
         { label: 'Brotli (q=11)', getValue: size => size.brotli }
       ]);
     } else {
-      renderSize('Real:         ', size, 'real');
-      renderSize('Gzip (q=9):   ', size, 'gzip');
-      renderSize('Brotli (q=11):', size, 'brotli');
+      if (size.current.brotli || size.current.gzip) {
+        renderSize('Real:         ', size, 'real');
+        renderSize('Gzip (q=9):   ', size, 'gzip');
+        renderSize('Brotli (q=11):', size, 'brotli');
+      } else {
+        renderSize('File size:', size, 'real');
+      }
     }
   } else {
     if (asTable) {
@@ -75,7 +79,7 @@ function renderHistoryTable(
 ) {
   const header = [
     { value: 'Time', width: 25 },
-    ...columns.map(({ label }) => ({ value: label, width: 25 }))
+    ...columns.map(({ label }) => ({ value: label, width: 28 }))
   ];
 
   const [previousSize] = history;
@@ -97,8 +101,11 @@ function renderHistoryTable(
 
   const table = Table(header, rows, {
     paddingLeft: 1,
+    paddingRight: 1,
     borderStyle: 1,
     paddingBottom: 0,
+    marginTop: 0,
+    marginLeft: 0,
     headerColor: 'cyan',
     borderColor: 'white',
     headerAlign: 'center',
@@ -107,7 +114,7 @@ function renderHistoryTable(
   });
 
   if (history.length > 0) {
-    console.info(cyan(`\n  The last ${history.length + 1} changes:`));
+    console.info(cyan(`\nThe last ${history.length + 1} changes:`));
   }
   console.info(table.render());
 }
