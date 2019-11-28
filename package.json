@@ -27,6 +27,9 @@
     "prepublishOnly": "rm -rf dist && tsc"
   },
   "prettier": "@deftomat/opinionated/prettier.config.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "chalk": "^3.0.0",
     "configstore": "^5.0.0",
