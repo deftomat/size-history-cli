@@ -64,6 +64,7 @@ function renderSize(
   { current, history: [previousSize] }: SizeWithHistory,
   type: keyof Size
 ) {
+  if (current[type] == null) return;
   const formatted = formatSize(current[type], previousSize ? previousSize[type] : undefined);
   console.info(yellow(label), formatted);
 }
