@@ -1,6 +1,6 @@
 {
   "name": "size-history-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Get and remember the file/dir size.",
   "license": "MIT",
   "author": "Tomas Szabo <tomas.szabo@deftomat.com>",

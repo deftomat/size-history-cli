@@ -1,3 +1,7 @@
+# 0.1.2
+
+- fix: better formatting
+
 # 0.1.1
 
 - fix: include hidden files in directory size calculation
