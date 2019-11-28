@@ -77,7 +77,7 @@ async function calculateFileSize(filename: string, fileStats: Stats): Promise<Si
 }
 
 function calculateDirSize(path: string): Size {
-  const size = execSync(`ls -nR "${path}" | grep -v '^d' | awk '{total += $5} END {print total}'`)
+  const size = execSync(`ls -anR "${path}" | grep -v '^d' | awk '{total += $5} END {print total}'`)
     .toString()
     .trim();
 
