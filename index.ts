@@ -36,9 +36,10 @@ async function run(input = '.', flags) {
   }
 
   const size = await getSizeWithHistory(path);
+  const asTable = flags.table && size.history.length > 0;
 
   if (fs.lstatSync(path).isFile()) {
-    if (flags.table) {
+    if (asTable) {
       renderHistoryTable(size, [
         { label: 'Real', getValue: size => size.real },
         { label: 'Gzip (q=9)', getValue: size => size.gzip },
@@ -50,7 +51,7 @@ async function run(input = '.', flags) {
       renderSize('Brotli (q=11):', size, 'brotli');
     }
   } else {
-    if (flags.table) {
+    if (asTable) {
       renderHistoryTable(size, [{ label: 'Directory size', getValue: size => size.real }]);
     } else {
       renderSize('Directory size: ', size, 'real');
