@@ -1,0 +1,43 @@
+{
+  "name": "size-history-cli",
+  "version": "0.1.0",
+  "description": "Get and remember the file/dir size.",
+  "license": "MIT",
+  "author": "Tomas Szabo <tomas.szabo@deftomat.com>",
+  "repository": "github:deftomat/size-history-cli",
+  "homepage": "https://github.com/deftomat/size-history-cli",
+  "keywords": [
+    "size",
+    "file",
+    "directory",
+    "history",
+    "diff",
+    "gzip",
+    "brotli"
+  ],
+  "bin": {
+    "size-history": "./bin/size-history.js"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "watch": "tsc --watch",
+    "prepublishOnly": "rm -rf dist && tsc"
+  },
+  "prettier": "@deftomat/opinionated/prettier.config.js",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "configstore": "^5.0.0",
+    "meow": "^5.0.0",
+    "pretty-bytes": "^5.3.0",
+    "tty-table": "^2.8.2"
+  },
+  "devDependencies": {
+    "@deftomat/opinionated": "0.4.7",
+    "@types/configstore": "^4.0.0",
+    "@types/node": "^12.12.14",
+    "typescript": "^3.7.2"
+  }
+}
