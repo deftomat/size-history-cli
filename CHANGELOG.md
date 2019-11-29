@@ -1,3 +1,7 @@
+# 0.1.3
+
+- fix: calculate gzip/brotli for non-compressed files
+
 # 0.1.2
 
 - fix: better formatting
