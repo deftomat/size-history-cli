@@ -24,4 +24,4 @@ $ size-history page.html -t
 
 **Options:**
 
-- `-t | --table`: render table with previous results
+- `-t | --table`: render table with previous results (works only when there is at least one history record)
