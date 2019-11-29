@@ -58,7 +58,7 @@ async function run(input = '.', flags) {
     if (asTable) {
       renderHistoryTable(size, [{ label: 'Directory size', getValue: size => size.real }]);
     } else {
-      renderSize('Directory size: ', size, 'real');
+      renderSize('Directory size:', size, 'real');
     }
   }
 }

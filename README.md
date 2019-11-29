@@ -2,7 +2,7 @@
 
 Get and remember the file or directory size.
 
-Gzip and Brotli sizes will be calculated automatically for files commonly served by web servers.
+Gzip and Brotli sizes will be calculated automatically for every compressible file which is smaller than 32MB.
 
 ## Installation
 

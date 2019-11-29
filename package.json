@@ -32,10 +32,12 @@
   },
   "dependencies": {
     "chalk": "^3.0.0",
+    "compressed-extensions": "^2.1.0",
     "configstore": "^5.0.0",
     "meow": "^5.0.0",
     "pretty-bytes": "^5.3.0",
-    "tty-table": "^2.8.2"
+    "tty-table": "^2.8.2",
+    "video-extensions": "^1.1.0"
   },
   "devDependencies": {
     "@deftomat/opinionated": "0.4.7",

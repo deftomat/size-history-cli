@@ -11,7 +11,8 @@
     "inlineSources": true,
     "target": "esnext",
     "outDir": "./dist",
-    "declaration": true
+    "declaration": true,
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules", "./dist"]
 }

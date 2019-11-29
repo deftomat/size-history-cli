@@ -1,9 +1,20 @@
+import compressedExtensions from 'compressed-extensions';
+import videoExtensions from 'video-extensions';
 import zlib from 'zlib';
+
+const compressedImages = ['jpeg', 'jpg', 'png', 'webp'];
+const nonCompressibleExtensions = [
+  ...compressedExtensions,
+  ...compressedImages,
+  ...videoExtensions
+];
 
 export async function canCompress(filename: string, fileSize: number) {
   const sizeLimit = 32 * 1024 * 1024;
-  const supported = ['.js', '.css', '.svg', '.ttf', '.otf', '.html', '.json', '.xml', '.csv'];
-  return supported.some(ext => filename.endsWith(ext)) && fileSize < sizeLimit;
+
+  return (
+    nonCompressibleExtensions.every(ext => !filename.endsWith(`.${ext}`)) && fileSize < sizeLimit
+  );
 }
 
 export function calculateGzipSize(input: Buffer): Promise<number> {
