@@ -6,7 +6,7 @@ Gzip and Brotli sizes will be calculated automatically for every compressible fi
 
 ## Installation
 
-> ⚠️ Tools is probably not working on Windows
+> ⚠️ Tool is probably not working on Windows!
 
 ```
 npm install --global size-history-cli
