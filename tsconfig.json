@@ -2,14 +2,14 @@
   "extends": "@deftomat/opinionated/tsconfig.json",
   "compilerOptions": {
     "isolatedModules": false,
-    "lib": ["es2017"],
+    "lib": ["ES2019"],
     "jsx": "preserve",
     "module": "commonjs",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "sourceMap": true,
     "inlineSources": true,
-    "target": "esnext",
+    "target": "ES2019",
     "outDir": "./dist",
     "declaration": true,
     "resolveJsonModule": true
