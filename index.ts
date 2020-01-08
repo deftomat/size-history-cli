@@ -45,21 +45,17 @@ async function run(input = '.', flags) {
         { label: 'Gzip (q=9)', getValue: size => size.gzip },
         { label: 'Brotli (q=11)', getValue: size => size.brotli }
       ]);
+    } else if (size.current.brotli || size.current.gzip) {
+      renderSize('Real:         ', size, 'real');
+      renderSize('Gzip (q=9):   ', size, 'gzip');
+      renderSize('Brotli (q=11):', size, 'brotli');
     } else {
-      if (size.current.brotli || size.current.gzip) {
-        renderSize('Real:         ', size, 'real');
-        renderSize('Gzip (q=9):   ', size, 'gzip');
-        renderSize('Brotli (q=11):', size, 'brotli');
-      } else {
-        renderSize('File size:', size, 'real');
-      }
+      renderSize('File size:', size, 'real');
     }
+  } else if (asTable) {
+    renderHistoryTable(size, [{ label: 'Directory size', getValue: size => size.real }]);
   } else {
-    if (asTable) {
-      renderHistoryTable(size, [{ label: 'Directory size', getValue: size => size.real }]);
-    } else {
-      renderSize('Directory size:', size, 'real');
-    }
+    renderSize('Directory size:', size, 'real');
   }
 }
 
@@ -75,7 +71,7 @@ function renderSize(
 
 function renderHistoryTable(
   { current, history }: SizeWithHistory,
-  columns: { label: string; getValue: (size: Size) => number | undefined }[]
+  columns: Array<{ label: string; getValue: (size: Size) => number | undefined }>
 ) {
   const header = [
     { value: 'Time', width: 25 },

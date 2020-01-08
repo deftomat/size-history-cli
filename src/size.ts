@@ -6,6 +6,8 @@ import prettyBytes from 'pretty-bytes';
 import { calculateBrotliSize, calculateGzipSize, canCompress } from './compression';
 
 const storeLimits = { entries: 250, history: 10 };
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const store = new Configstore(require('../../package.json').name, { file: [], dir: [] });
 
 export interface SizeWithHistory {
@@ -31,12 +33,11 @@ export async function getSizeWithHistory(path: string): Promise<SizeWithHistory>
     const history = readHistory(path, 'file');
     pushHistory(path, current, 'file');
     return { current, history: maskHistory(current, history) };
-  } else {
-    const current = calculateDirSize(path);
-    const history = readHistory(path, 'dir');
-    pushHistory(path, current, 'dir');
-    return { current, history: maskHistory(current, history) };
   }
+  const current = calculateDirSize(path);
+  const history = readHistory(path, 'dir');
+  pushHistory(path, current, 'dir');
+  return { current, history: maskHistory(current, history) };
 }
 
 export function formatSize(value?: number, previous?: number) {
@@ -71,9 +72,8 @@ async function calculateFileSize(filename: string, fileStats: Stats): Promise<Si
       gzip: await calculateGzipSize(content),
       brotli: await calculateBrotliSize(content)
     };
-  } else {
-    return { real: fileStats.size };
   }
+  return { real: fileStats.size };
 }
 
 function calculateDirSize(path: string): Size {

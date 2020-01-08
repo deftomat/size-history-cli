@@ -30,10 +30,16 @@
     "dist"
   ],
   "scripts": {
+    "checkup": "opinionated checkup",
     "watch": "tsc --watch",
     "prepublishOnly": "rm -rf dist && tsc"
   },
-  "prettier": "@deftomat/opinionated/prettier.config.js",
+  "prettier": "@deftomat/opinionated/configs/prettier.config.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "opinionated pre-commit"
+    }
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
@@ -47,9 +53,11 @@
     "video-extensions": "^1.1.0"
   },
   "devDependencies": {
-    "@deftomat/opinionated": "0.4.7",
+    "@deftomat/opinionated": "0.5.8",
     "@types/configstore": "^4.0.0",
     "@types/node": "^12.12.14",
+    "husky": "^4.0.1",
+    "prettier": "1.19.1",
     "typescript": "^3.7.2"
   }
 }
