@@ -1,3 +1,7 @@
+# 0.2.0
+
+- BREAKING: require Node v12
+
 # 0.1.3
 
 - fix: calculate gzip/brotli for non-compressed files
