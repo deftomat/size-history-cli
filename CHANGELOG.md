@@ -1,3 +1,7 @@
+# 0.2.1
+
+- fix: reduce package size by removing source maps
+
 # 0.2.0
 
 - BREAKING: require Node v12
