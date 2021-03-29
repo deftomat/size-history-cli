@@ -63,16 +63,19 @@ function areSizesEqual(a: Size, b: Size) {
 }
 
 async function calculateFileSize(filename: string, fileStats: Stats): Promise<Size> {
-  const compressible = await canCompress(filename, fileStats.size);
+  const compressible = canCompress(filename, fileStats.size);
+
   if (compressible) {
     const content = fs.readFileSync(filename);
 
-    return {
-      real: fileStats.size,
-      gzip: await calculateGzipSize(content),
-      brotli: await calculateBrotliSize(content)
-    };
+    const [gzip, brotli] = await Promise.all([
+      calculateGzipSize(content),
+      calculateBrotliSize(content)
+    ]);
+
+    return { real: fileStats.size, gzip, brotli };
   }
+
   return { real: fileStats.size };
 }
 

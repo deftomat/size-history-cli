@@ -2,14 +2,14 @@ import compressedExtensions from 'compressed-extensions';
 import videoExtensions from 'video-extensions';
 import zlib from 'zlib';
 
-const compressedImages = ['jpeg', 'jpg', 'png', 'webp'];
+const compressedImages = ['jpeg', 'jpg', 'png', 'webp', '.avif', '.heic'];
 const nonCompressibleExtensions = [
   ...compressedExtensions,
   ...compressedImages,
   ...videoExtensions
 ];
 
-export async function canCompress(filename: string, fileSize: number) {
+export function canCompress(filename: string, fileSize: number): boolean {
   const sizeLimit = 32 * 1024 * 1024;
 
   return (

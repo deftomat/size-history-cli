@@ -1,3 +1,8 @@
+# 0.2.2
+
+- fix: parallel gzip/brotli compression
+- chore: update dependencies
+
 # 0.2.1
 
 - fix: reduce package size by removing source maps
