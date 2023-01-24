@@ -1,3 +1,8 @@
+# 0.3.0
+
+- feat: Reduce Brotli compression level from 11 to 9 to speed up compression.
+- fix: Do not truncate text in table view.
+
 # 0.2.2
 
 - fix: parallel gzip/brotli compression

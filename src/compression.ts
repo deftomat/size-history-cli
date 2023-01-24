@@ -33,7 +33,7 @@ export function calculateBrotliSize(input: Buffer): Promise<number> {
   return new Promise((resolve, reject) => {
     zlib.brotliCompress(
       input,
-      { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 11 } },
+      { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 9 } },
       (error, result) => {
         if (error) {
           reject(error);

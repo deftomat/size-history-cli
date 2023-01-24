@@ -43,12 +43,12 @@ async function run(input = '.', flags) {
       renderHistoryTable(size, [
         { label: 'Real', getValue: size => size.real },
         { label: 'Gzip (q=9)', getValue: size => size.gzip },
-        { label: 'Brotli (q=11)', getValue: size => size.brotli }
+        { label: 'Brotli (q=9)', getValue: size => size.brotli }
       ]);
     } else if (size.current.brotli || size.current.gzip) {
-      renderSize('Real:         ', size, 'real');
-      renderSize('Gzip (q=9):   ', size, 'gzip');
-      renderSize('Brotli (q=11):', size, 'brotli');
+      renderSize('Real:        ', size, 'real');
+      renderSize('Gzip (q=9):  ', size, 'gzip');
+      renderSize('Brotli (q=9):', size, 'brotli');
     } else {
       renderSize('File size:', size, 'real');
     }
@@ -75,7 +75,7 @@ function renderHistoryTable(
 ) {
   const header = [
     { value: 'Time', width: 25 },
-    ...columns.map(({ label }) => ({ value: label, width: 28 }))
+    ...columns.map(({ label }) => ({ value: label, width: 25 }))
   ];
 
   const [previousSize] = history;
@@ -105,8 +105,7 @@ function renderHistoryTable(
     headerColor: 'cyan',
     borderColor: 'white',
     headerAlign: 'center',
-    align: 'left',
-    truncate: '...'
+    align: 'left'
   });
 
   if (history.length > 0) {
